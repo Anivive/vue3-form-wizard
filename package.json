@@ -18,14 +18,15 @@
     }
   ],
   "scripts": {
-    "build": "vue-cli-service build --target lib --name vue3-form-wizard src/components/main.vue",
+    "build": "vue-cli-service build --target lib --name index src/main.js src/sass/main.scss && rm ./dist/demo.html",
     "lint": "vue-cli-service lint",
     "docs": "docsify serve ./docs",
     "test": "jest ./tests"
   },
-  "main": "./dist/vue3-form-wizard.common.js",
-  "dependencies": {
-    "core-js": "^3.8.1",
+  "main": "dist/index.common.js",
+  "unpkg": "dist/index.min.js",
+  "dependencies": {},
+  "peerDependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
@@ -40,6 +41,7 @@
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.0.0-beta.14",
     "babel-jest": "^26.6.3",
+    "core-js": "^3.8.1",
     "eslint": "^6.8.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
@@ -55,7 +57,7 @@
     "url": "https://github.com/Anivive/vue3-form-wizard/issues"
   },
   "files": [
-    "dist"
+    "dist/*"
   ],
   "directories": {},
   "keywords": [],
