@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # test coverage output files
 /coverage/
+
+# production files
+/dist/
