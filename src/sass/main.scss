@@ -1,0 +1,199 @@
+
+// Lato
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.vue-form-wizard {
+  align-items: stretch;
+  align-content: stretch;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  justify-content: center;
+  width: 30%;
+  margin: auto;
+
+  .property-container {
+    overflow-y: hidden;
+  }
+
+  .error-container {
+
+  }
+
+  .control-container {
+
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  .clickable {
+    cursor: pointer;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"] {
+    appearance: none;
+    border: 2px solid $mid-gray;
+    border-radius: .5rem;
+    display: block;
+    font-family: 'Lato', sans-serif;
+    height: 1.3rem;
+    margin: 0;
+    outline: none;
+    padding: 1rem;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  label {
+
+  }
+
+  .input-component {
+    input {
+
+    }
+  }
+
+  .textarea-component {
+    textarea {
+      border-radius: 0.5rem;
+      font-family: 'Lato', sans-serif;
+      height: 10rem;
+      resize: none;
+      width: 100%;
+    }
+  }
+  
+  .dropdown-component {
+    label {
+  
+      input {
+        &.open {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+  
+        &.readonly {
+          cursor: pointer;
+        }
+      }
+  
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        border-left: .4rem solid transparent;
+        border-right: .4rem solid transparent;
+        border-top: .4rem solid #000;
+        cursor: pointer;
+      }
+    }
+  
+    .dropdown-list {
+      max-height: 50%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      transition: max-height 0.3s ease-in-out;
+      width: 100%;
+  
+      &.open {
+        max-height: 16rem;
+      }
+  
+      .option {
+        align-items: center;
+        background-color: $white;
+        border: none;
+        border-radius: 0.125rem;
+        box-sizing: border-box;
+        min-height: 4rem;
+        color: $black;
+        display: flex;
+        flex-direction: colummn;
+        font-family: $sharp-sans, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        justify-content: center;
+        line-height: 1.5rem;
+        padding: 0 1.5rem;
+        position: relative;
+        outline: none;
+        width: 100%;
+        -webkit-appearance: none;
+  
+        &:not(:last-of-type):after {
+          content: '';
+          background: $light-gray;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 95%;
+          height: 1px;
+        }
+  
+        &:hover {
+          background-color: $very-light-blue;
+        }
+      }
+    }
+  }
+  
+  .options-component {
+    height: 100%;
+
+    .options-list {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+
+      label {
+        align-items: center;
+        background-color: $white;
+        border-radius: 0.5rem;
+        border: 2px solid transparent;
+        display: flex;
+        font-weight: 500;
+        line-height: 1.3rem;
+        margin: 1.5rem 0;
+        height: 3rem;
+
+        &.selected {
+          border: 2px solid $dark-blue;
+        }
+    
+        &:hover {
+          background-color: $very-light-blue;
+        }
+
+        input {
+
+          &:checked {
+            background-color: $dark-blue;
+            border: 2px solid transparent;
+          }
+
+          // &[type="checkbox"] {
+            
+          // }
+
+          // &[type="radio"] {
+            
+          // }
+        }
+      }
+    }
+
+  }
+}

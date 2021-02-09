@@ -1,0 +1,66 @@
+{
+  "name": "vue3-form-wizard",
+  "version": "1.0.0",
+  "description": "Vue 3 wizard style json form generator",
+  "organization": "Anivive Lifesciences Inc.",
+  "author": {
+    "name": "Dan McGowan",
+    "url": "https://github.com/dan2kx"
+  },
+  "contributors": [
+    {
+      "name": "Skyler Stearns",
+      "url": "https://github.com/SkylerStearns"
+    },
+    {
+      "name": "Nick Sirago",
+      "url": "https://github.com/sirago"
+    }
+  ],
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "docs": "docsify serve ./docs",
+    "test": "jest ./tests"
+  },
+  "main": "main.ts",
+  "dependencies": {
+    "core-js": "^3.8.1",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.9",
+    "@vue/cli-plugin-typescript": "^4.5.9",
+    "@vue/cli-service": "^4.5.9",
+    "@vue/compiler-sfc": "^3.0.4",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^2.0.0-beta.14",
+    "babel-jest": "^26.6.3",
+    "eslint": "^6.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.2.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3",
+    "vue-jest": "^5.0.0-alpha.8"
+  },
+  "bugs": {
+    "url": "https://github.com/Anivive/vue3-form-wizard/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "directories": {},
+  "keywords": [],
+  "homepage": "https://github.com/Anivive/vue3-form-wizard#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anivive/vue3-form-wizard.git"
+  }
+}
