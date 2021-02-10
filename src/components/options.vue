@@ -1,7 +1,7 @@
 <template>
   <div class="options-component">
     {{ text }}
-    <div ref="container" class="options-list" :style="{ 'height': `${containerHeight}px`}">
+    <div ref="container" class="options-list">
       <label
         v-for="(item, index) in data"
         class="clickable"
@@ -20,10 +20,12 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, Ref } from 'vue';
+// eslint-disable-next-line no-unused-vars
+import { ref, Ref } from 'vue';
 
 import useApi from '@/composites/useApi.ts';
 
+// eslint-disable-next-line no-unused-vars
 import { iOptionsList } from '@/interfaces/form.d.ts';
 
 export default {
@@ -48,22 +50,20 @@ export default {
     'update:modelValue'
   ],
   setup(props, { emit }) {
-    const options: iOptionsList = props.options;
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    const { options } = props;
     const { list, api } = options;
-
-    const windowHeight: Ref = ref(window.innerHeight);
 
     const data: Ref = ref([]);
 
     if (typeof api === 'object') {
       useApi(api).then((response: any) => { data.value = response; });
-    }
-    else {
+    } else {
       data.value = list;
-    };
+    }
 
-    const idKey = options.keys ? options.keys.id : 'id';
-    const valueKey = options.keys ? options.keys.value : 'value';
+    const idKey = options.keys && options.keys.id ? options.keys.id : 'id';
+    const valueKey = options.keys && options.keys.value ? options.keys.value : 'value';
     const selected: Ref = ref([]);
 
     const handleChange = (value: any) => {
@@ -104,10 +104,7 @@ export default {
       }
     }
 
-    const containerHeight = computed(() => windowHeight.value / 2);
-
     return {
-      containerHeight,
       data,
       handleChange,
       isSelected,
