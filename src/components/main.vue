@@ -146,7 +146,7 @@ export default {
       },
       submit: {
         go: go.submit,
-        isDisabled: computed(() => !currentValue.value)
+        isDisabled: computed(() => currentProperty.value.required && !currentValue.value)
       }
     })
 

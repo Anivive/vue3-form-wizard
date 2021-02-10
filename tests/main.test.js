@@ -234,9 +234,21 @@ describe('Component', () => {
   })
 
   describe('submit button', () => {
-    it('should render on the last question and be disabled if no value', () => {
+    it('should render on the last question and be enabled if no value', () => {
       wrapper = createWrapper({
         form: form.textInput
+      });
+      const found = wrapper.findAll('button').filter((el) => el.text() === 'Submit')
+      expect(found.length).toEqual(1);
+      expect(found[0].element.disabled).toEqual(false);
+    })
+
+    it('should render on the last question and be disabled if no value and required equals true', () => {
+      wrapper = createWrapper({
+        form: [{
+          ...form.textInput[0], 
+          required: true
+        }],
       });
       const found = wrapper.findAll('button').filter((el) => el.text() === 'Submit')
       expect(found.length).toEqual(1);
