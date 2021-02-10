@@ -1,6 +1,7 @@
 <template>
   <div class="textarea-component">
     <label>
+      {{ text }}
       <textarea
         :maxlength="options.maxlength"
         :placeholder="options.placeholder"
@@ -49,5 +50,4 @@ export default {
     };
   }
 };
-
 </script>

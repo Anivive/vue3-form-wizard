@@ -46,6 +46,7 @@ export default function useControls(
     emit('skip', currentProperty.value.required);
 
     if (!currentProperty.value.required) {
+      delete data[currentProperty.value.property];
       incrementProperty(1);
       onSuccess();
     }

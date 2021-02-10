@@ -1,23 +1,25 @@
 <template>
   <div ref="root" class="dropdown-component">
     <div>
-      {{ text }}
       <label>
-        <input
-          :class="[
-            { 'readonly' : !options.filter },
-            { 'open': isOpen },
-          ]"
-          type="text"
-          v-model="searchText"
-          :placeholder="options.placeholder"
-          :readonly="options.filter === false"
-          @keyup.enter="selectFirstItem"
-          @input="handleFilter($event.target.value)"
-          @click="handleOpen(!isOpen)"
-        >
+        {{ text }}
+        <span class="input-wrapper">
+          <input
+            :class="[
+              { 'readonly' : !options.filter },
+              { 'open': isOpen },
+            ]"
+            type="text"
+            v-model="selectedValue"
+            :placeholder="options.placeholder"
+            :readonly="options.filter === false"
+            @keyup.enter="selectFirstItem"
+            @input="handleFilter($event.target.value)"
+            @click="handleOpen(!isOpen)"
+          >
+        </span>
       </label>
-      <div v-if="isOpen" class="dropdown-list" :style="{ 'height': `${containerHeight}px`}">
+      <div class="dropdown-list" :class="{ 'open': isOpen }">
         <template v-if="filteredOptions.length">
           <span
             v-for="(item, index) in filteredOptions"
@@ -68,27 +70,27 @@ export default {
     'update:modelValue'
   ],
   setup(props, { emit }) {
-    // eslint-disable-next-line prefer-destructuring
+    // eslint-disable-next-line
     const options: iOptionsListFilter = props.options;
 
     const { list, api } = options;
 
-    const windowHeight: Ref = ref(window.innerHeight);
-
     const data: Ref = ref([]);
+    const root: Ref = ref(null);
+    const isOpen: Ref = ref(false);
+    const searchText: Ref = ref('');
+    const selectedValue: Ref = ref('');
+    const {
+      id: idKey = 'id',
+      value: valueKey = 'value'
+    } = options.keys || {};
 
     if (typeof api === 'object') {
       useApi(api).then((response: any) => { data.value = response; });
     }
-    else {
+    else if (Array.isArray(list)) {
       data.value = list;
-    };
-
-    const root: Ref = ref(null);
-    const isOpen: Ref = ref(false);
-    const searchText: Ref = ref('');
-    const idKey = options.keys ? options.keys.id : 'id';
-    const valueKey = options.keys ? options.keys.value : 'value';
+    }
 
     const handleFilter = (value: string) => {
       searchText.value = value;
@@ -102,8 +104,8 @@ export default {
     };
 
     const handleChange = (value: any) => {
-      searchText.value = value[valueKey];
       handleOpen(false);
+      selectedValue.value = value[valueKey];
       emit('set', props.property, value, true);
     };
 
@@ -115,7 +117,7 @@ export default {
     const selectFirstItem = () => {
       if (filteredOptions.value.length > 0 && isOpen.value) {
         handleChange(filteredOptions.value[0]);
-      };
+      }
     };
 
     const isSelected = (item: any) => props.value && item[idKey] === props.value[idKey];
@@ -142,8 +144,7 @@ export default {
       if (typeof options.default === 'object') {
         // eslint-disable-next-line max-len
         item = data.value.find((obj: any) => Object.keys(options.default).every((key: string) => obj[key] === options.default[key]));
-      }
-      else {
+      } else {
         item = data.value[options.default];
       }
 
@@ -152,10 +153,7 @@ export default {
       }
     }
 
-    const containerHeight = computed(() => windowHeight.value / 3);
-
     return {
-      containerHeight,
       filteredOptions,
       handleChange,
       handleFilter,
@@ -165,9 +163,9 @@ export default {
       searchText,
       selectFirstItem,
       root,
-      valueKey
+      valueKey,
+      selectedValue
     };
   }
 };
-
 </script>

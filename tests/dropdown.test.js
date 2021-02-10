@@ -137,7 +137,7 @@ describe('Component', () => {
 
     it('should set default answer with integer value', async () => {
       const options = {
-        ...dropDown.options, 
+        ...dropDown.options,
         default: 0
       }
       wrapper = createWrapper({
@@ -197,9 +197,9 @@ describe('Component', () => {
       });
 
       expect(global.fetch).toHaveBeenCalledTimes(1);
-      
+
       await wrapper.vm.$nextTick();
-      
+
       wrapper.vm.$nextTick(async () => {
         await wrapper.find('input').trigger('click');
         expect(wrapper.findAll('.dropdown-list span').length).toBeGreaterThan(1);

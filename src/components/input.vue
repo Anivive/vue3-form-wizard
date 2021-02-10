@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import useValidator from '@/composites/useValidator.ts';
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved,no-unused-vars
 import { iOptionsInput } from '@/interfaces/form';
 
 export default {
@@ -38,7 +38,7 @@ export default {
     'set'
   ],
   setup(props, { emit }) {
-    // eslint-disable-next-line prefer-destructuring
+    // eslint-disable-next-line prefer-destructuring,vue/no-setup-props-destructure
     const options: iOptionsInput = props.options;
     const isValid = useValidator(options);
 

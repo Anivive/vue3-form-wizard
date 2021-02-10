@@ -1,7 +1,7 @@
 <template>
   <div v-if="Array.isArray(form) && form.length" class="vue-form-wizard">
-    <slot 
-      :name="currentProperty.type" 
+    <slot
+      :name="currentProperty.type"
       :key="currentIndex"
       :index="currentIndex"
       :text="currentProperty.text"
@@ -11,9 +11,9 @@
       :set="setProperty"
     >
       <div class="property-container">
-        <component 
+        <component
           :key="currentIndex"
-          :is="getComponent()" 
+          :is="getComponent()"
           :text="currentProperty.text"
           :property="currentProperty.property"
           :value="currentValue"
@@ -23,7 +23,7 @@
       </div>
     </slot>
 
-    <slot 
+    <slot
       v-if="showErrors && currentValid"
       name="error"
       :errors="currentValid.errors"
@@ -35,7 +35,7 @@
       </div>
     </slot>
 
-    <slot 
+    <slot
       name="controls"
       :key="currentIndex"
       :index="currentIndex"
@@ -61,7 +61,7 @@ import DropDown from './dropdown.vue';
 import Options from './options.vue';
 import Textarea from './textarea.vue';
 
-// composites 
+// composites
 import useControls from '@/composites/useControls';
 
 // interfaces
@@ -84,7 +84,7 @@ export default {
     }
   },
   components: {
-    Input, 
+    Input,
     DropDown,
     Options,
     Textarea
@@ -117,7 +117,7 @@ export default {
     }
 
     let data = reactive(props.modelValue);
-  
+
     let currentIndex = ref(props.startAt);
 
     const getProperty = () => props.form[currentIndex.value];
@@ -147,7 +147,7 @@ export default {
       submit: {
         go: go.submit,
         isDisabled: computed(() => !currentValue.value)
-      } 
+      }
     })
 
     const setProperty = (property: string, value: any, valid: boolean | { errors: [] }) => {
