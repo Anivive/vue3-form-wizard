@@ -10,7 +10,7 @@
               { 'open': isOpen },
             ]"
             type="text"
-            v-model="searchText"
+            v-model="selectedValue"
             :placeholder="options.placeholder"
             :readonly="options.filter === false"
             @keyup.enter="selectFirstItem"
@@ -70,27 +70,27 @@ export default {
     'update:modelValue'
   ],
   setup(props, { emit }) {
-    // eslint-disable-next-line prefer-destructuring,vue/no-setup-props-destructure
+    // eslint-disable-next-line
     const options: iOptionsListFilter = props.options;
 
     const { list, api } = options;
 
     const data: Ref = ref([]);
+    const root: Ref = ref(null);
+    const isOpen: Ref = ref(false);
+    const searchText: Ref = ref('');
+    const selectedValue: Ref = ref('');
+    const {
+      id: idKey = 'id',
+      value: valueKey = 'value'
+    } = options.keys || {};
 
     if (typeof api === 'object') {
       useApi(api).then((response: any) => { data.value = response; });
     }
-    else {
+    else if (Array.isArray(list)) {
       data.value = list;
     }
-
-    const root: Ref = ref(null);
-    const isOpen: Ref = ref(false);
-    const searchText: Ref = ref('');
-    const idKey = options.keys && options.keys.id ? options.keys.id : 'id';
-    const valueKey = options.keys && options.keys.value ? options.keys.value : 'value';
-
-    let temp = '';
 
     const handleFilter = (value: string) => {
       searchText.value = value;
@@ -98,28 +98,14 @@ export default {
 
     const handleOpen = (value: boolean) => {
       if (value) {
-        Promise.resolve()
-          .then(() => { temp = searchText.value; })
-          .then(() => { searchText.value = ''; });
-      } else {
-        setTimeout(() => {
-          searchText.value = temp;
-        }, 500);
+        searchText.value = '';
       }
       isOpen.value = value;
     };
 
     const handleChange = (value: any) => {
-      Promise.resolve()
-        .then(() => {
-          handleOpen(false);
-        })
-        .then(() => {
-          setTimeout(() => {
-            temp = value[valueKey];
-            searchText.value = value[valueKey];
-          }, 500);
-        });
+      handleOpen(false);
+      selectedValue.value = value[valueKey];
       emit('set', props.property, value, true);
     };
 
@@ -163,9 +149,7 @@ export default {
       }
 
       if (item) {
-        temp = item[valueKey];
-        searchText.value = item[valueKey];
-        emit('set', props.property, item, true);
+        handleChange(item);
       }
     }
 
@@ -179,9 +163,9 @@ export default {
       searchText,
       selectFirstItem,
       root,
-      valueKey
+      valueKey,
+      selectedValue
     };
   }
 };
-
 </script>

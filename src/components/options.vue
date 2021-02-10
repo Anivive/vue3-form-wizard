@@ -50,21 +50,23 @@ export default {
     'update:modelValue'
   ],
   setup(props, { emit }) {
-    // eslint-disable-next-line vue/no-setup-props-destructure
-    const { options } = props;
+    // eslint-disable-next-line
+    const options: iOptionsList = props.options;
     const { list, api } = options;
 
     const data: Ref = ref([]);
+    const selected: Ref = ref([]);
+    const {
+      id: idKey = 'id',
+      value: valueKey = 'value'
+    } = options.keys || {};
 
     if (typeof api === 'object') {
       useApi(api).then((response: any) => { data.value = response; });
-    } else {
+    }
+    else if (Array.isArray(list)) {
       data.value = list;
     }
-
-    const idKey = options.keys && options.keys.id ? options.keys.id : 'id';
-    const valueKey = options.keys && options.keys.value ? options.keys.value : 'value';
-    const selected: Ref = ref([]);
 
     const handleChange = (value: any) => {
       if (options.multiSelect) {
