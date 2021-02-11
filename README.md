@@ -14,12 +14,36 @@
 </div> 
 
 
+## Introduction
+Vue 3 Form Wizard is a Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
 
-### Introduction
-Vue 3 Form Wizard is Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
+Form elements can be added easily using Javascript Object Notation to create a simple user interaction displaying one question at a time before transitioning to the next.
 
+The package has built in support for the most common input types which can be styled to your liking.
 
-### Usage
+- Input
+- Textarea
+- Dropdown (filterable)
+- Single and Multi Select Options List
+
+Supports validation of inputs before allowing the user to progress through the form.
+
+Gives the flexibility of adding your own custom input types with minimal effort and easily add callbacks to each form navigation.
+
+---
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Usage](#usage)
+* [Documentation](#documentation)
+* [Table of Contents](#table-of-contents)
+* [Contributing Guidelines](#contributing-guidelines)
+* [Code Of Conduct](#code-of-conduct)
+* [Bugs and Feature Requests](#bugs-and-feature-requests)
+* [Copyright and License](#copyright-and-license)
+
+---
+## Usage
 Install the package using the node package manager. 
 
 ```npm
@@ -31,6 +55,9 @@ import onto your component and add to the `components` key.
 ```js
 import VueFormWizard from 'vue3-form-wizard'
 
+// If you want to use our styling
+import 'vue3-form-wizard/dist/index.css'; 
+
 export default {
   components: {
     VueFormWizard
@@ -40,22 +67,52 @@ export default {
 
 You can then add the component to your template, where the `form` property is an array of objects for generating the form and `v-model` is where to store the data on your component.
 
+
 ```html
 <vue-form-wizard :form="config" v-model="formData" />
 ```
 
-## Table of Contents
+The `form` property can be configured with objects for each input type very easily:
 
-* [Introduction](#introduction)
-* [Usage](#usage)
-* [Table of Contents](#table-of-contents)
-* [Contributing Guidelines](#contributing-guidelines)
-* [Code Of Conduct](#code-of-conduct)
-* [Bugs and Feature Requests](#bugs-and-feature-requests)
-* [Copyright and License](#copyright-and-license)
+```json
+  [
+    {
+      "property": "text",
+      "text": "This is a simple text input question. (Min 3 chars, required)",
+      "type": "input",
+      "options": {
+        "type": "text",
+        "validations": {
+          "min": {
+            "value": 3,
+            "message": "Input needs to be at least 3 characters"
+          },
+        },
+        "placeholder": "Enter the text."
+      },
+      "required": true
+    },
+    ...
+  ]
+```
 
+---
 
+## Documentation
+Full documentation can be found [here](https://expert-giggle-ffac66c9.pages.github.io/).
 
+---
+
+## Coming Soon
+**Summary view** - Will summarize the user input and allow a quick edit functionality.
+
+**Progress indicator** - This will visually indicate to the user the progress through the form.
+
+**Conditions** - An additional configurable item which will allow for dynamic form generation, based on the answers given, new inputs can be added to the sequence.
+
+**Custom Components** - We also plan to make some out-of-the-box custom components, like a date selector.
+
+---
 ## Contributing Guidelines
 Please read through our [contributing guidelines](CONTRIBUTING.md). Included are directions
 for opening issues, coding standards, and notes on development.
@@ -64,7 +121,6 @@ Moreover, if your pull request contains JavaScript patches or features, you must
 unit tests. All HTML and CSS should conform to the Code Guide, maintained by Mark Otto.
 
 ---
-
 
 
 ## Code Of Conduct

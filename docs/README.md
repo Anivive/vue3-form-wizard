@@ -14,9 +14,21 @@
 </div> 
 
 ### Introduction
-Vue 3 Form Wizard is Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
+Vue 3 Form Wizard is a Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
 
-Vue 3 Form Wizard handles the transition between inputs and will validate before moving to the next input type. 
+Form elements can be added easily using Javascript Object Notation to create a simple user interaction displaying one question at a time before transitioning to the next.
+
+The package has built in support for the most common input types which can be styled to your liking.
+
+- Input
+- Textarea
+- Dropdown (filterable)
+- Single and Multi Select Options List
+
+Supports validation of inputs before allowing the user to progress through the form.
+
+Gives the flexibility of adding your own custom input types with minimal effort and easily add callbacks to each form navigation.
+
 
 ### Usage
 Install the package using the node package manager. 
