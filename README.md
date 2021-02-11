@@ -8,27 +8,31 @@
 [![Vue](https://img.shields.io/badge/vue-3.0.5-%2342b883)](https://v3.vuejs.org/)
 [![Typescript](https://img.shields.io/badge/typescript-4.1.3-blue)](https://www.typescriptlang.org/)
 [![Jest](https://img.shields.io/badge/jest-26.6.3-red)](https://jestjs.io/en/)
-[![Docsify](https://img.shields.io/badge/docsify-4.11.6-green)](https://docsify.js.org/#/)
 [![Testing Coverage](https://img.shields.io/badge/coverage-100%25-green)](https://github.com/Anivive/vue-package-starter)
 
 </div> 
 
 
 ## Introduction
-Vue 3 Form Wizard is a Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
+Vue 3 Form Wizard is a JSON configurable, fully customizable, form builder that allows developers to easily create step-based forms.
 
-Form elements can be added easily using Javascript Object Notation to create a simple user interaction displaying one question at a time before transitioning to the next.
+Form questions can be generated easily by specifying a JSON configuration object. The end result is a step-based form which will display one question at a time.
 
-The package has built in support for the most common input types which can be styled to your liking.
+Support for the most common input types
 
-- Input
+- Text Input
 - Textarea
 - Dropdown (filterable)
 - Single and Multi Select Options List
+- Ability to create your own custom input types
 
-Supports validation of inputs before allowing the user to progress through the form.
+### Features
 
-Gives the flexibility of adding your own custom input types with minimal effort and easily add callbacks to each form navigation.
+* Fully customizable style
+* Validation of input on a per-step basis
+* Custom validation messages
+* Ability to query API to get list options
+* Callbacks after each question
 
 ---
 ## Table of Contents
