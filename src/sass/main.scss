@@ -1,5 +1,4 @@
-* {
-  box-sizing: border-box;
+:root {
   --button-background-standard: #0d6efd;
   --button-border-standard: #0d6efd;
 
@@ -29,6 +28,10 @@
   --option-inner-active: #ffffff;
 
   --error: #ff0000;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .vue-form-wizard {
