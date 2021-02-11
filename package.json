@@ -61,7 +61,13 @@
     "dist/*"
   ],
   "directories": {},
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "vue-3",
+    "form",
+    "wizard",
+    "json"
+  ],
   "homepage": "https://github.com/Anivive/vue3-form-wizard#readme",
   "license": "MIT",
   "repository": {
