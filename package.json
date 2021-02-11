@@ -1,5 +1,5 @@
 {
-  "name": "vue3-form-wizard",
+  "name": "@anivive/vue3-form-wizard",
   "version": "1.0.0",
   "description": "Vue 3 wizard style json form generator",
   "organization": "Anivive Lifesciences Inc.",
