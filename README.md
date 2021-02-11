@@ -4,12 +4,6 @@
 
 # Vue 3 Form Wizard
 
-Vue Starter Package integrated with Typescript and Eslint
-
-Automated unit testing with Jest
-
-Auto-generated documentation via Docsify
-
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen)](/templates/LICENSE.md)
 [![Vue](https://img.shields.io/badge/vue-3.0.5-%2342b883)](https://v3.vuejs.org/)
 [![Typescript](https://img.shields.io/badge/typescript-4.1.3-blue)](https://www.typescriptlang.org/)
@@ -21,16 +15,39 @@ Auto-generated documentation via Docsify
 
 
 
-## Getting Started
-### Install necessary dependencies for development
-```
-npm install
+### Introduction
+Vue 3 Form Wizard is Vue 3 compatable, JSON configurable, fully customizable, form builder that allows developers to easily add dynamic entry components to their Vue projects.
+
+
+### Usage
+Install the package using the node package manager. 
+
+```npm
+npm install vue3-form-wizard
 ```
 
+import onto your component and add to the `components` key.
+
+```js
+import VueFormWizard from 'vue3-form-wizard'
+
+export default {
+  components: {
+    VueFormWizard
+  }
+}
+```
+
+You can then add the component to your template, where the `form` property is an array of objects for generating the form and `v-model` is where to store the data on your component.
+
+```html
+<vue-form-wizard :form="config" v-model="formData" />
+```
 
 ## Table of Contents
 
-* [Getting Started](#getting-started)
+* [Introduction](#introduction)
+* [Usage](#usage)
 * [Table of Contents](#table-of-contents)
 * [Contributing Guidelines](#contributing-guidelines)
 * [Code Of Conduct](#code-of-conduct)
@@ -62,7 +79,7 @@ Found a bug or have a feature request? Please first read the issue guidelines an
 existing and closed issues.
 
 If your problem or idea is not addressed yet, please
-[open a new issue](https://github.com/Anivive/vue-package-starter/issues).
+[open a new issue](https://github.com/Anivive/vue3-form-wizard/issues).
 
 
 
