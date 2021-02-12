@@ -30,7 +30,7 @@ As you can see from the example above, the controls object has properties for ea
 Each one of these is an object with more properties:
 
 #### Go
-The `go` is the function on each button and performs the navigation action, you can bind this to any event you need for your implementation, it will also emit the internal [events](events.md) which allows you to add callback code, or you could call the go method from inside another function if desired.
+The `go` is the function on each button and performs the navigation action, you can bind this to any event you need for your implementation, it will also emit the internal [events](../events.md) which allows you to add callback code, or you could call the go method from inside another function if desired.
 
 #### Is Disabled
 The `isDisabled` property can be used to determine if the button should be enabled, internally, this property updates based on the position the form item is in the config and whether or not a value is present.

@@ -26,7 +26,7 @@ Support for the most common input types
 - Single and Multi Select Options List
 - Ability to create your own custom input types
 
-### Features
+## Features
 
 * Fully customizable style
 * Validation of input on a per-step basis
@@ -36,18 +36,20 @@ Support for the most common input types
 
 ---
 ## Table of Contents
-
 * [Introduction](#introduction)
-* [Usage](#usage)
+* [Features](#features)
+* [Getting Started](#getting-started)
+* [Events](#events)
+* [Creating a Form](#creating-a-form)
 * [Documentation](#documentation)
 * [Table of Contents](#table-of-contents)
 * [Contributing Guidelines](#contributing-guidelines)
 * [Code Of Conduct](#code-of-conduct)
 * [Bugs and Feature Requests](#bugs-and-feature-requests)
 * [Copyright and License](#copyright-and-license)
-
 ---
-## Usage
+
+## Getting Started
 Install the package using the node package manager:
 
 ```npm
@@ -59,7 +61,7 @@ Import onto your component and add to the `components` key:
 ```js
 import VueFormWizard from '@anivive/vue3-form-wizard'
 
-// If you want to use our styling
+// Optional Default CSS
 import '@anivive/vue3-form-wizard/dist/index.css'; 
 
 export default {
@@ -72,13 +74,30 @@ export default {
 You can then add the component to your template, where the `form` property is an array of objects for generating the form and `v-model` is where to store the data on your component:
 
 ```html
-<vue-form-wizard :form="config" v-model="formData" />
+<vue-form-wizard
+  :form="config"
+  v-model="formData"
+  @submit="handleSubmit(formData)"
+/>
 ```
 
-The `form` property can be configured with objects for each input type very easily:
+## Events
 
-```json
+The component emits one of four events when a button is clicked:
+* `previous`
+* `skip` (disabled when required)
+* `next`
+* `submit` (only on the final question)
+
+## Creating A Form
+Creating a form is simple and customizable using a basic JSON file. You may create forms as long as you like, by just adding a valid question object to the array of questions. Each question type has a number of configurable options, and has basic validation built in.
+
+Below are some example questions that the `form` property will use to build your wizard:
+
+
+```js
   [
+    // Text Input - Minimum 3 characters, required
     {
       "property": "question1",
       "text": "What is your name? *",
@@ -95,6 +114,7 @@ The `form` property can be configured with objects for each input type very easi
       },
       "required": true
     },
+    // Number Input - Minimum value of 3, maximum value of 40
     {
       "property": "question2",
       "text": "What is your favorite number between 3 and 40?",
@@ -114,48 +134,45 @@ The `form` property can be configured with objects for each input type very easi
         "placeholder": "Enter a number"
       }
     },
-    {
-      "property": "question3",
-      "text": "What is your email?",
-      "type": "input",
-      "options": {
-        "type": "email",
-        "placeholder": "Enter your email"
-      }
-    },
+    // Single select question (Radio) - Options hardcoded
     {
       "property": "question4",
-      "text": "This is a multiselect question. (Options hardcoded)",
-      "type": "options",
-      "options": {
-        "multiSelect": true,
-        "list": [
-          {
-            "id": 1,
-            "value": "First answer"
-          },
-          {
-            "id": 2,
-            "value": "Second answer"
-          },
-          {
-            "id": 3,
-            "value": "Third answer"
-          }
-        ]
-      }
-    }
-    {
-      "property": "question6",
-      "text": "This is a single select question. (Options called from API)",
+      "text": "What is your favorite time of year?",
       "type": "options",
       "options": {
         "multiSelect": false,
+        "list": [
+          {
+            "id": 1,
+            "value": "Winter"
+          },
+          {
+            "id": 2,
+            "value": "Spring"
+          },
+          {
+            "id": 3,
+            "value": "Summer"
+          },
+          {
+            "id": 4,
+            "value": "Fall"
+          }
+        ]
+      }
+    },
+    // Multiselect question (Checkbox) - Populates options with API call using key value of 'topping' 
+    {
+      "property": "question6",
+      "text": "What toppings do you like on your pizza?",
+      "type": "options",
+      "options": {
+        "multiSelect": true,
         "api": {
           "url": "https://jsonplaceholder.typicode.com/posts"
         },
         "keys": {
-          "value": "title"
+          "value": "topping"
         }
       }
     }

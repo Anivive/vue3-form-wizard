@@ -3,7 +3,7 @@ Leveraging some of the best Vue features, it's possible to create your own custo
 
 Lets say you created your own Vue 3 component named `CoolCustomInput` and added it to the form configuration file like this: 
 
-```json
+```js
   {
     "property": "data-name",
     "text": "This text is what the user sees",
@@ -11,7 +11,7 @@ Lets say you created your own Vue 3 component named `CoolCustomInput` and added 
     "required": true | false,
     "options": { 
       // these can be specific to your component
-    },
+    }
   }
 ```
 
@@ -46,7 +46,6 @@ The `set` property is actually a method, this should be used to send data back u
 
 ```js
   set(property, value, valid);
-
 ```
 
 ##### Property
