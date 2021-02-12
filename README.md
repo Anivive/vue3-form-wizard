@@ -18,8 +18,9 @@ Vue 3 Form Wizard is a JSON configurable, fully customizable, form builder that 
 
 Form questions can be generated easily by specifying a JSON configuration object. The end result is a step-based form which will display one question at a time.
 
-Support for the most common input types
+### [Check out our live demo!](https://stackblitz.com/edit/vue3-form-wizard-demo?file=src/App.vue)
 
+Support for the most common input types:
 - Text Input
 - Textarea
 - Dropdown (filterable)
@@ -35,6 +36,7 @@ Support for the most common input types
 * Callbacks after each question
 
 ---
+
 ## Table of Contents
 * [Introduction](#introduction)
 * [Features](#features)
