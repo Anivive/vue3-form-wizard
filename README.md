@@ -4,7 +4,7 @@
 
 # Vue 3 Form Wizard
 
-[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen)](/templates/LICENSE.md)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen)](./LICENSE.md)
 [![Vue](https://img.shields.io/badge/vue-3.0.5-%2342b883)](https://v3.vuejs.org/)
 [![Typescript](https://img.shields.io/badge/typescript-4.1.3-blue)](https://www.typescriptlang.org/)
 [![Jest](https://img.shields.io/badge/jest-26.6.3-red)](https://jestjs.io/en/)
@@ -48,19 +48,19 @@ Support for the most common input types
 
 ---
 ## Usage
-Install the package using the node package manager. 
+Install the package using the node package manager:
 
 ```npm
-npm install vue3-form-wizard
+npm install @anivive/vue3-form-wizard
 ```
 
-import onto your component and add to the `components` key.
+Import onto your component and add to the `components` key:
 
 ```js
-import VueFormWizard from 'vue3-form-wizard'
+import VueFormWizard from '@anivive/vue3-form-wizard'
 
 // If you want to use our styling
-import 'vue3-form-wizard/dist/index.css'; 
+import '@anivive/vue3-form-wizard/dist/index.css'; 
 
 export default {
   components: {
@@ -69,8 +69,7 @@ export default {
 }
 ```
 
-You can then add the component to your template, where the `form` property is an array of objects for generating the form and `v-model` is where to store the data on your component.
-
+You can then add the component to your template, where the `form` property is an array of objects for generating the form and `v-model` is where to store the data on your component:
 
 ```html
 <vue-form-wizard :form="config" v-model="formData" />
@@ -81,8 +80,8 @@ The `form` property can be configured with objects for each input type very easi
 ```json
   [
     {
-      "property": "text",
-      "text": "This is a simple text input question. (Min 3 chars, required)",
+      "property": "question1",
+      "text": "What is your name? *",
       "type": "input",
       "options": {
         "type": "text",
@@ -90,13 +89,76 @@ The `form` property can be configured with objects for each input type very easi
           "min": {
             "value": 3,
             "message": "Input needs to be at least 3 characters"
-          },
+          }
         },
         "placeholder": "Enter the text."
       },
       "required": true
     },
-    ...
+    {
+      "property": "question2",
+      "text": "What is your favorite number between 3 and 40?",
+      "type": "input",
+      "options": {
+        "type": "number",
+        "validations": {
+          "min": {
+            "value": 3,
+            "message": "Minimum value is 3"
+          },
+          "max": {
+            "value": 40,
+            "message": "Maximum value is 40"
+          }
+        },
+        "placeholder": "Enter a number"
+      }
+    },
+    {
+      "property": "question3",
+      "text": "What is your email?",
+      "type": "input",
+      "options": {
+        "type": "email",
+        "placeholder": "Enter your email"
+      }
+    },
+    {
+      "property": "question4",
+      "text": "This is a multiselect question. (Options hardcoded)",
+      "type": "options",
+      "options": {
+        "multiSelect": true,
+        "list": [
+          {
+            "id": 1,
+            "value": "First answer"
+          },
+          {
+            "id": 2,
+            "value": "Second answer"
+          },
+          {
+            "id": 3,
+            "value": "Third answer"
+          }
+        ]
+      }
+    }
+    {
+      "property": "question6",
+      "text": "This is a single select question. (Options called from API)",
+      "type": "options",
+      "options": {
+        "multiSelect": false,
+        "api": {
+          "url": "https://jsonplaceholder.typicode.com/posts"
+        },
+        "keys": {
+          "value": "title"
+        }
+      }
+    }
   ]
 ```
 
@@ -118,7 +180,7 @@ Full documentation can be found [here](https://expert-giggle-ffac66c9.pages.gith
 
 ---
 ## Contributing Guidelines
-Please read through our [contributing guidelines](CONTRIBUTING.md). Included are directions
+Please read through our [contributing guidelines](.github/CONTRIBUTING.md). Included are directions
 for opening issues, coding standards, and notes on development.
 
 Moreover, if your pull request contains JavaScript patches or features, you must include relevant
@@ -145,7 +207,7 @@ If your problem or idea is not addressed yet, please
 
 ## Thanks
 Thank you to all of you who have contributed to this package.
-[[Contribute to the Project](CONTRIBUTING.md)]
+[[Contribute to the Project](.github/CONTRIBUTING.md)]
 
 
 
