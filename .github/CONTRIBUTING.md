@@ -1,4 +1,4 @@
-# Contributing to <span style="color: red">[PACKAGE-NAME]</span>
+# Contributing to Vue 3 Form Wizard
 Looking to contribute something to Vue 3 Form Wizard?
 **Here's how you can help**.
 
@@ -65,7 +65,7 @@ Guidelines for bug reports:
    main in the repository.
 
 4. **Isolate the problem** — ideally create a reduced test case, and a live example.
-   [Codepen](https://codepen.io/) or [JS Bin](https://jsbin.com/?html,output) are helpful tools.
+   [Codepen](https://codepen.io/) or [StackBlitz](https://stackblitz.com/) are helpful tools.
 
 A good bug report shouldn't leave others needing to chase you up for more information.
 Please try to be as detailed as possible in your report. What is your environment?
