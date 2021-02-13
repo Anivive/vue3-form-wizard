@@ -23,10 +23,10 @@
     "docs": "docsify serve ./docs",
     "test": "jest ./tests"
   },
-  "main": "dist/index.common.js",
-  "browser": "dist/index.umd.js",
-  "unpkg": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.common.min.js",
+  "browser": "dist/index.umd.min.js",
+  "unpkg": "dist/index.umd.min.js",
+  "module": "dist/index.esm.min.js",
   "dependencies": {},
   "peerDependencies": {
     "vue": "^3.0.5"
