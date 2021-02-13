@@ -18,6 +18,9 @@
         "src/*"
       ]
     },
+    // "declaration": true,
+    // "emitDeclarationOnly": true,
+    // "outDir": "types",
     "lib": [
       "esnext",
       "dom",
