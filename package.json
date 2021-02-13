@@ -18,18 +18,22 @@
     }
   ],
   "scripts": {
-    "build": "vue-cli-service build --target lib --name index src/main.js src/sass/main.scss && rm ./dist/demo.html",
+    "build": "rollup -c",
     "lint": "vue-cli-service lint",
     "docs": "docsify serve ./docs",
     "test": "jest ./tests"
   },
   "main": "dist/index.common.js",
-  "unpkg": "dist/index.min.js",
+  "browser": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
   "dependencies": {},
   "peerDependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-typescript": "^8.1.1",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -46,7 +50,16 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.2.0",
+    "install": "^0.13.0",
     "jest": "^26.6.3",
+    "npm": "^7.5.4",
+    "postcss": "^8.2.6",
+    "rollup-plugin-minify": "^1.0.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-scss": "^2.6.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
     "ts-jest": "^26.4.4",
